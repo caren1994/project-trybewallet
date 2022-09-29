@@ -5,7 +5,6 @@ import { getEmail } from '../redux/actions';
 
 class Login extends React.Component {
   state = {
-
     email: '',
     password: '',
     isDisabled: true,
