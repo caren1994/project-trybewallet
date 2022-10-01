@@ -54,7 +54,7 @@ export function fetchApiCotacao(param) {
       const data = await response.json();
       const total = data[param.currency].ask * param.value;
       console.log(total);
-      dispatch(getWalletForm({ ...param, exchandeRates: data }));
+      dispatch(getWalletForm({ ...param, exchangeRates: data }));
       dispatch(getTotal(total));
     } catch (error) {
       dispatch(failedRequest(error.message));
