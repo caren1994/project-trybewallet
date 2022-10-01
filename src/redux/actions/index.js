@@ -4,6 +4,8 @@ export const REQUIRE_API = 'REQUEST_API';
 export const FAILED_REQUEST = 'FAILED_REQUEST';
 export const GET_WALLET_FORM = 'GET_WALLET_FORM';
 export const GET_TOTAL = 'GET_TOTAL';
+export const GET_ALTERA_TOTAL = 'GET_ALTERA_TOTAL';
+export const GET_EXCLUI = 'GET_EXCLUI';
 
 export const getEmail = (payload) => ({
   type: GET_EMAIL,
@@ -29,6 +31,16 @@ export const failedRequest = (error) => ({
 export const getWalletForm = (expenses) => ({
   type: GET_WALLET_FORM,
   payload: expenses,
+});
+
+export const getAlteraTotal = (payload) => ({
+  type: GET_ALTERA_TOTAL,
+  payload,
+});
+
+export const getExclui = (expenses) => ({
+  type: GET_EXCLUI,
+  expenses,
 });
 
 export function fetchApi() {

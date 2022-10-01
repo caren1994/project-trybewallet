@@ -1,4 +1,4 @@
-import { GET_CURRENCY, GET_WALLET_FORM } from '../actions';
+import { GET_CURRENCY, GET_WALLET_FORM, GET_EXCLUI } from '../actions';
 
 const initialState = {
   currencies: [],
@@ -18,6 +18,12 @@ function wallet(state = initialState, action) {
     return {
       ...state,
       expenses: [...state.expenses, action.payload],
+    };
+  }
+  case GET_EXCLUI: {
+    return {
+      ...state,
+      expenses: action.expenses,
     };
   }
   default:

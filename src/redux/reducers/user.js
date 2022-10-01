@@ -1,4 +1,4 @@
-import { GET_EMAIL, GET_TOTAL } from '../actions';
+import { GET_EMAIL, GET_TOTAL, GET_ALTERA_TOTAL } from '../actions';
 
 const initialState = {
   email: '',
@@ -20,7 +20,13 @@ function user(state = initialState, action) {
       total: soma,
     };
   }
-
+  case GET_ALTERA_TOTAL: {
+    const subtracao = (Number(state.total) - Number(action.payload)).toFixed(2);
+    return {
+      ...state,
+      total: subtracao,
+    };
+  }
   default:
     return state;
   }
