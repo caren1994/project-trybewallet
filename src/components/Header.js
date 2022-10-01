@@ -17,6 +17,7 @@ class Header extends Component {
 Header.propTypes = {
   user: PropTypes.shape({
     email: PropTypes.string,
+    total: PropTypes.number,
   }),
 }.isRequired;
 
