@@ -67,6 +67,7 @@ class WalletForm extends Component {
               name="value"
               value={ value }
               id="value"
+              placeholder="value"
               onChange={ this.handleChange }
             />
           </label>
@@ -74,6 +75,7 @@ class WalletForm extends Component {
             Descrição da Despesa:
             <input
               type="text"
+              placeholder="description"
               data-testid="description-input"
               name="description"
               id="description"
@@ -130,7 +132,7 @@ class WalletForm extends Component {
           </label>
           {editor ? ( // se tiver true mostra um botao se for false mostra o outro
             <button type="button" onClick={ this.handleEditor }>
-              Editar despesa
+              Editar despesas
             </button>
           ) : (
             <button type="button" onClick={ this.handleClick }>

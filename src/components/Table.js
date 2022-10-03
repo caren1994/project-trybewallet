@@ -46,7 +46,7 @@ class Table extends Component {
               * Number(element.value);
             const fixed = Converted.toFixed(2);
             const currency = Number(
-              element.exchangeRates[element.currency].ask,
+              element.exchangeRates[element.currency].ask, // esta  acessando o objeto pela key dele (element.currency) e pegando o valor de ask dentro desse objeto,Seria um exchance.(key do objeto, no caso sigla da moeda).ask
             );
             return (
               <tr key={ element.id }>
