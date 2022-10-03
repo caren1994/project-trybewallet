@@ -67,6 +67,7 @@ describe('60% dos testes', () => {
     });
     expect(btnExcluir).toBeInTheDocument();
     expect(tipoGasto).toBeInTheDocument();
+    userEvent.click(btnExcluir);
   });
 });
 describe('90% dos testes', () => {

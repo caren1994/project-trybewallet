@@ -7,11 +7,9 @@ class Header extends Component {
     const { expenses } = this.props;
     const valorTotal = expenses.reduce((acc, curr) => { // TIVE QUE LEMBRAR DE COMO FAZER REDUCE, NA 9 O OUTRO JEITO NAO ESTAVA DANDO CERTO!
       const moeda = curr.currency; // curr valor atual do elemento currency
-      if (moeda !== 'USDT') {
-        const mult = Number(curr.exchangeRates[moeda].ask) * Number(curr.value); // curr valor atual do elemento value
-        return acc + Number(mult);
-      }
-      return acc;
+
+      const mult = Number(curr.exchangeRates[moeda].ask) * Number(curr.value); // curr valor atual do elemento value
+      return acc + Number(mult);
     }, 0); // começa com o valor 0 acc
     return Number(valorTotal).toFixed(2);
   };
