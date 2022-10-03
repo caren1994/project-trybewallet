@@ -12,10 +12,10 @@ class Login extends React.Component {
 
   handleChange = ({ target }) => {
     const { name, value } = target;
-    this.setState({ [name]: value }, () => this.verifyBtn());
+    this.setState({ [name]: value }, () => this.verifyBtn()); // chamo a função aqui para nao ter "delay"
   };
 
-  verifyBtn = () => {
+  verifyBtn = () => { // validação do campo de email e password e troca para false o botao
     const { email, password } = this.state;
     const regex = /\S+@\S+\.\S+/;
     const numberMin = 6;
@@ -24,7 +24,7 @@ class Login extends React.Component {
     this.setState({ isDisabled: !(verifyEmail && verifypassword) });
   };
 
-  handleClick = (e) => {
+  handleClick = (e) => { // dispara a action q salva o email no store e muda para outra pagina
     e.preventDefault();
     const { history, dispatch } = this.props;
     const { email } = this.state;

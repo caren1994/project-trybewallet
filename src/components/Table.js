@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getAlteraTotal, getExclui } from '../redux/actions';
+import { getExclui, alteraStateEditor } from '../redux/actions';
 
 class Table extends Component {
-  handleClick = (id, fixed) => {
+  handleClick = (id) => {
     const { dispatch, expenses } = this.props;
     const exclui = expenses.filter((element) => element.id !== id);
-    dispatch(getExclui(exclui));
-    dispatch(getAlteraTotal(fixed));
+    dispatch(getExclui(exclui)); // altera o obj do expenses
+  };
+
+  AlteraEditor = (id) => {
+    const { dispatch } = this.props;
+    dispatch(alteraStateEditor(id)); // altera o state do editor
   };
 
   render() {
@@ -57,8 +61,15 @@ class Table extends Component {
                 <td>
                   <button
                     type="button"
+                    data-testid="edit-btn"
+                    onClick={ () => this.AlteraEditor(element.id) }
+                  >
+                    Editar despesa
+                  </button>
+                  <button
+                    type="button"
                     data-testid="delete-btn"
-                    onClick={ () => this.handleClick(element.id, fixed) }
+                    onClick={ () => this.handleClick(element.id) }
                   >
                     Excluir
                   </button>

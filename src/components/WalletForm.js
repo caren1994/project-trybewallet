@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchApi, fetchApiCotacao } from '../redux/actions';
+import { fetchApi, fetchApiCotacao, newExpense } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
@@ -15,18 +15,34 @@ class WalletForm extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchApi());
+    dispatch(fetchApi()); // dispara a action que faz a requisicao a api
   }
 
-  handleChange = ({ target }) => {
+  handleChange = ({ target }) => { // função generica que salva no state os inputs
     const { name, value } = target;
     this.setState({ [name]: value });
   };
 
   handleClick = () => {
     const { dispatch } = this.props;
+    dispatch(fetchApiCotacao(this.state)); // dispara a action para salvar no store as informações
+    this.resetState(); // limpo os campos
+  };
+
+  handleEditor = () => {
+    const { id, expenses, dispatch } = this.props; // recebo o id , e o expenses do state
+    const findObj = expenses.find((element) => element.id === id); // encontr o obj do expenses igual ao id guardado
+    const expensesObj = expenses.filter((element) => element.id !== id); // retorna um filter de elementos diferentes do id selecionado
+    const { exchangeRates } = findObj;// recupera do obj igual ao is o exchange daquele momento(readme pede)
+    const { value, description, currency, method, tag } = this.state; // recupero oq foi digitado no input
+    const editObj = { id, value, description, currency, method, tag, exchangeRates }; // coloco oq vai sr alterado no obj
+    const newObj = [...expensesObj, editObj].sort((a, b) => a.id - b.id); // sort para colocar em ordem numerica
+    dispatch(newExpense(newObj)); // envio para a action que vai alterar o reduce
+    this.resetState();
+  };
+
+  resetState = () => {
     const { id } = this.state;
-    dispatch(fetchApiCotacao(this.state));
     this.setState({
       id: id + 1,
       value: '',
@@ -38,12 +54,8 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { currencies } = this.props;
-    const { value,
-      description,
-      currency,
-      method,
-      tag } = this.state;
+    const { currencies, editor } = this.props;
+    const { value, description, currency, method, tag } = this.state;
     return (
       <div>
         <form>
@@ -80,7 +92,9 @@ class WalletForm extends Component {
               onChange={ this.handleChange }
             >
               {currencies.map((currencie, index) => (
-                <option key={ index } value={ currencie }>{currencie}</option>
+                <option key={ index } value={ currencie }>
+                  {currencie}
+                </option>
               ))}
             </select>
           </label>
@@ -114,7 +128,15 @@ class WalletForm extends Component {
               <option value="Saúde">Saúde</option>
             </select>
           </label>
-          <button type="button" onClick={ this.handleClick }>Adicionar despesa</button>
+          {editor ? ( // se tiver true mostra um botao se for false mostra o outro
+            <button type="button" onClick={ this.handleEditor }>
+              Editar despesa
+            </button>
+          ) : (
+            <button type="button" onClick={ this.handleClick }>
+              Adicionar despesa
+            </button>
+          )}
         </form>
       </div>
     );
@@ -127,9 +149,11 @@ WalletForm.propTypes = {
   currencies: PropTypes.array,
 }.isRequired;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({ // recupero do store as info
   currencies: state.wallet.currencies,
-  // expenses: state.wallet.expenses,
+  editor: state.wallet.editor,
+  id: state.wallet.idToEdit,
+  expenses: state.wallet.expenses,
 });
 // const mapDispatchToProps = (dispatch) => ({
 //   requisicao: (state) => dispatch(fetchApiCotacao(state)),
