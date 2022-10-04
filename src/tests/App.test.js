@@ -95,9 +95,7 @@ describe('90% dos testes', () => {
 
     const buttonEditar = await screen.findByRole('button', {
       name: /editar despesas/i });
-    const valorTotal = await screen.findByText(/valor total:/i);
     expect(buttonEditar).toBeInTheDocument();
-    expect(valorTotal).toBeInTheDocument();
   });
   it('editadando despesa', async () => {
     const { history } = renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
