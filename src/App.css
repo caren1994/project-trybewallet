@@ -39,3 +39,114 @@
     transform: rotate(360deg);
   }
 }
+body{
+  background-color: black;
+  color:white;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  border:1px solid white;
+  width:200px;
+  height: 220px;
+  justify-content: center;
+  margin:0 auto;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 200px;
+  box-shadow: 10px 10px 8px gray ;
+
+
+  
+}
+.email{
+ 
+  width:140px;
+  height: 20px;
+  border-radius: 8px;
+  box-shadow:10px 10px 8px gray ;
+
+}
+.password{
+  width:140px;
+  height: 20px;
+  border-radius: 8px;
+  box-shadow:10px 10px 8px gray ;
+}
+.buttonEntrar{
+  width:100px;
+  height: 30px;
+  margin-left: 50px;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+.tabela{
+  border:1px solid white;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.inputs{
+  border-radius: 8px;
+  border-left: 8px;
+  margin-left:15px ;
+  margin-bottom: 20px;
+}
+table,
+tr,
+th,
+td {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-collapse: collapse;
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+td {
+  background-color: rgba(255, 255, 255, 0.13);
+}
+
+tr {
+  display: flex;
+  width: 100%;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+th, td {
+  width: 135px;
+}
+
+td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+th:nth-child(5), td:nth-child(5) {
+  width: 280px;
+}
+
+td:last-child button {
+  margin: 0px 3px;
+}
+
+table button {
+  background-color: #ffffff;
+  color: #080710;
+  font-weight: 600;
+  border-radius: 5px;
+  border-style: none;
+  height: 30px;
+  padding: 0px 3px;
+}

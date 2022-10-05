@@ -59,9 +59,10 @@ class WalletForm extends Component {
     return (
       <div>
         <form>
-          <label htmlFor="value">
+          <label className="inputs" htmlFor="value">
             Valor da Despesa:
             <input
+              className="inputs"
               type="number"
               data-testid="value-input"
               name="value"
@@ -71,9 +72,10 @@ class WalletForm extends Component {
               onChange={ this.handleChange }
             />
           </label>
-          <label htmlFor="description">
+          <label className="inputs" htmlFor="description">
             Descrição da Despesa:
             <input
+              className="inputs"
               type="text"
               placeholder="description"
               data-testid="description-input"
@@ -84,9 +86,10 @@ class WalletForm extends Component {
             />
           </label>
 
-          <label htmlFor="currency">
+          <label className="inputs" htmlFor="currency">
             Moeda:
             <select
+              className="inputs"
               name="currency"
               id="currency"
               value={ currency }
@@ -100,9 +103,10 @@ class WalletForm extends Component {
               ))}
             </select>
           </label>
-          <label htmlFor="method">
+          <label className="inputs" htmlFor="method">
             Método de pagamento:
             <select
+              className="inputs"
               name="method"
               id="method"
               value={ method }
@@ -114,9 +118,11 @@ class WalletForm extends Component {
               <option value="Cartão de débito"> Cartão de débito</option>
             </select>
           </label>
-          <label htmlFor="tag">
+          <label className="inputs" htmlFor="tag">
+
             Tipo de Despesas:
             <select
+              className="inputs"
               name="tag"
               id="tag"
               value={ tag }
@@ -131,11 +137,11 @@ class WalletForm extends Component {
             </select>
           </label>
           {editor ? ( // se tiver true mostra um botao se for false mostra o outro
-            <button type="button" onClick={ this.handleEditor }>
+            <button type="button" className="inputs" onClick={ this.handleEditor }>
               Editar despesas
             </button>
           ) : (
-            <button type="button" onClick={ this.handleClick }>
+            <button type="button" className="inputs" onClick={ this.handleClick }>
               Adicionar despesa
             </button>
           )}
