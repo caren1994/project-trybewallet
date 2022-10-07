@@ -153,7 +153,6 @@ class WalletForm extends Component {
 
 WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  isLoading: PropTypes.string,
   currencies: PropTypes.array,
 }.isRequired;
 
