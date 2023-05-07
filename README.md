@@ -6,10 +6,10 @@ Neste projeto desenvolvi web-app de carteira de controle de gastos com conversor
 
 Ao utilizar essa aplicação um usuário deverá ser capaz de:
 
-Adicionar, remover e editar um gasto;
-Visualizar uma tabelas com seus gastos;
-Visualizar o total de gastos convertidos para uma moeda de escolha;
-Foi utilizado a API de Moedas (https://docs.awesomeapi.com.br/api-de-moedas)
+- Adicionar, remover e editar um gasto;
+- Visualizar uma tabelas com seus gastos;
+- Visualizar o total de gastos convertidos para uma moeda de escolha;
+- Foi utilizado a API de Moedas (https://docs.awesomeapi.com.br/api-de-moedas)
 
 ## Habilidades
 
@@ -24,8 +24,6 @@ Foi utilizado a API de Moedas (https://docs.awesomeapi.com.br/api-de-moedas)
 
 ## :information_source: Como usar
 
-# Clone o repositório
-$ git clone https://github.com/vinibortoletto/trybe-wallet.git
 # Instale as dependências
 $ npm install
 # Rode o app
